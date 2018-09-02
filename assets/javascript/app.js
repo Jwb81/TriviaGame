@@ -92,15 +92,20 @@ var checkGuess = function( guess ) {
     
     if (guess === questions[questionNumber].correctAnswer) {
         $('#answer-description').html(
-
+            "<h3>Congratulations!</h3>" +
+            "<p>You guessed correctly</p>" +
+            "<br /><img src='assets/images/ferrari_logo.png' style='width: 50%;'"
         );
-        setTimeout(guessedRight(), 3000);   
+        setTimeout(guessedRight, 3000);   
     }
     else {
         $('#answer-description').html(
-            
+            "<h3>Sorry!</h3>" +
+            "<p>You guessed incorrectly... The correct answer was " + 
+            questions[questionNumber].correctAnswer + "</p>" +
+            "<br /><img src='assets/images/ferrari_logo.png' style='width: 50%;'"
         );
-        setTimeout(guessedWrong(), 3000);
+        setTimeout(guessedWrong, 3000);
     }
 }
 
