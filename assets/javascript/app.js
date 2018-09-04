@@ -7,6 +7,46 @@ var questions = [
         c : "Alpha Romeo",
         d : "Ford",
         correctAnswer : "b"
+    },
+    {
+        question : "What was the first Japanese car to be produced in the United States?",
+        a : "Honda Accord", 
+        b : "Mazda Miata",
+        c : "Toyota Camry",
+        d : "Nissan Maxima",
+        correctAnswer : "a"
+    },
+    {
+        question : "What was the first car to come equipped with anti-lock brakes?",
+        a : "Lincoln Continental Mark III", 
+        b : "Shelby Cobra",
+        c : "BMW 1600",
+        d : "Jensen FF",
+        correctAnswer : "d"
+    },
+    {
+        question : "What car sold more than one million units in 1965, setting a record that still stands today?",
+        a : "Buick Wildcat", 
+        b : "Pontiac GTO",
+        c : "Ford Thunderbird",
+        d : "Chevrolet Impala",
+        correctAnswer : "d"
+    },
+    {
+        question : "What year was the Corvette first introduced?",
+        a : "1943", 
+        b : "1953",
+        c : "1963",
+        d : "1973",
+        correctAnswer : "b"
+    },
+    {
+        question : "What kind of car did Starsky and Hutch drink in the classic television series?",
+        a : "Ford Bronco", 
+        b : "Ford Thunderbird",
+        c : "Ford Gran Torino",
+        d : "Ford Ranger",
+        correctAnswer : "c"
     }
 ]
 
@@ -72,9 +112,11 @@ var nextQuestion = function( id ) {
         return;
     }
 
+    $('#answer-description').empty();
+
     var nextQuestion = questions[id];
 
-    timeRemaining = 5;
+    timeRemaining = 10;
 
     $('#question-number').text(questionNumber + 1); // incremented because the array is 0-based
     $('#question').text(nextQuestion.question);
@@ -94,7 +136,7 @@ var checkGuess = function( guess ) {
         $('#answer-description').html(
             "<h3>Congratulations!</h3>" +
             "<p>You guessed correctly</p>" +
-            "<br /><img src='assets/images/ferrari_logo.png' style='width: 50%;'"
+            "<img src='assets/images/ferrari_logo.png' style='width: 50%;'"
         );
         setTimeout(guessedRight, 3000);   
     }

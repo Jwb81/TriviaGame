@@ -16,3 +16,8 @@ body {
 div[id^="answer"]:hover {
     cursor: pointer;
 }
+
+#game-title {
+    font-family: 'Monoton', sans-serif;
+    font-size: 4em;
+}
