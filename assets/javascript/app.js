@@ -6,7 +6,8 @@ var questions = [
         b : "Ferrari",
         c : "Alpha Romeo",
         d : "Ford",
-        correctAnswer : "b"
+        correctAnswer : "b",
+        image : "assets/images/ferrari_logo.png"
     },
     {
         question : "What was the first Japanese car to be produced in the United States?",
@@ -56,15 +57,44 @@ var timeRemaining;                      // how much time is left for a question
 var questionNumber = 0;                 // current question (in array)
 var questionCount = questions.length;   // total questions
 
-var guessedWrong = function() {
+var guessedWrong = function(message) {
+    // display some info
+    $('#answer-description').html(
+        // "<h3>Sorry!</h3>" +
+        // "<p>You guessed incorrectly... The correct answer was " + 
+        // questions[questionNumber].correctAnswer + "</p>" +
+        // "<br /><img src='assets/images/ferrari_logo.png' style='width: 50%;'"
+
+        "<h3>" + message + "</h3>" +
+        "<div style='height:200px;width: 60%;margin: 0 auto;padding-top: 10px;background-color: rgba(0,0,0,0.25)'>" + 
+            "<div style='float: left;width: 50%;height:200px;'><img src=" + questions[questionNumber].image + " style='height:180px;'></div>" +
+            "<div style='float:left;width: 50%;margin-top: 75px;'>" +
+                "<h6>Unfortunately the correct answer was " + questions[questionNumber][questions[questionNumber].correctAnswer] + "</h6>" + 
+            "</div>" +
+        "</div>"
+    );
+
     questionNumber++;
-    nextQuestion(questionNumber);
+
+    setTimeout(nextQuestion, 3000);
 }
 
 var guessedRight = function() {
+    // display some info
+    $('#answer-description').html(
+        "<h3>Congratulations!</h3>" +
+        "<div style='height:200px;width: 60%;margin: 0 auto;padding-top: 10px;background-color: rgba(0,0,0,0.25)'>" + 
+            "<div style='float: left;width: 50%;'><img src=" + questions[questionNumber].image + " style='height:180px;'></div>" +
+            "<div style='float:left;width: 50%;margin-top: 75px;'>" +
+                "<h6>The correct answer was " + questions[questionNumber][questions[questionNumber].correctAnswer] + "</h6>" + 
+            "</div>" +
+        "</div>"
+    );
+
     correctCount++;
     questionNumber++;
-    nextQuestion(questionNumber);
+
+    setTimeout(nextQuestion, 3000);
 }
 
 var changeTimeRemaining = function() {
@@ -75,7 +105,8 @@ var changeTimeRemaining = function() {
 
     // if time is done, handle it like the question was answered wrong
     if (!timeRemaining) {
-        guessedWrong();
+        clearInterval(timer);
+        guessedWrong("Times Up!");
         return;
     }
 }
@@ -106,7 +137,7 @@ var endGame = function() {
 }
 
 // load the next question onto the page
-var nextQuestion = function( id ) {
+var nextQuestion = function( ) {
     if (questionNumber == questionCount) {
         endGame();
         return;
@@ -114,7 +145,7 @@ var nextQuestion = function( id ) {
 
     $('#answer-description').empty();
 
-    var nextQuestion = questions[id];
+    var nextQuestion = questions[questionNumber];
 
     timeRemaining = 10;
 
@@ -131,23 +162,14 @@ var nextQuestion = function( id ) {
 
 // compares the user's guess against the correct answer
 var checkGuess = function( guess ) {
+    // stop the timer while this message is displayed
+    clearInterval(timer);
     
     if (guess === questions[questionNumber].correctAnswer) {
-        $('#answer-description').html(
-            "<h3>Congratulations!</h3>" +
-            "<p>You guessed correctly</p>" +
-            "<img src='assets/images/ferrari_logo.png' style='width: 50%;'"
-        );
-        setTimeout(guessedRight, 3000);   
+        guessedRight();        
     }
     else {
-        $('#answer-description').html(
-            "<h3>Sorry!</h3>" +
-            "<p>You guessed incorrectly... The correct answer was " + 
-            questions[questionNumber].correctAnswer + "</p>" +
-            "<br /><img src='assets/images/ferrari_logo.png' style='width: 50%;'"
-        );
-        setTimeout(guessedWrong, 3000);
+        guessedWrong("Sorry!");
     }
 }
 
