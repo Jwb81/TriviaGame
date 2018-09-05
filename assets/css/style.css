@@ -6,7 +6,7 @@ html, body {
 body {
     width: 100%;
     background-image: url("../images/audi.jpg");
-    /* background-repeat: no-repeat; */
+    background-repeat: repeat-y;
     background-size: auto;
 }
 
@@ -28,4 +28,9 @@ div[id^="answer"]:hover {
 #game-title {
     font-family: 'Monoton', sans-serif;
     font-size: 4em;
+}
+
+#answer-description img {
+    max-height: 200px;
+    max-width: 100%;
 }

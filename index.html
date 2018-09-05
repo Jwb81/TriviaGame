@@ -9,11 +9,9 @@
 
     <!-- styles -->
     <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <!-- scripts -->
 </head>
 
 <body>
@@ -21,7 +19,7 @@
     <div class="card">
         <div id='game-title' class="card-title">Totally Trivial Trivia</div>
         <div class="card-body">
-            <h3>Question #<span id="question-number"></span></h3>
+            <h3>Question #<span id="question-number"></span> <span id="question-count"></span></h3>
             <div>Time remaining: <span id="time-remaining"></span> seconds</div>
         </div>
         <div class="card-body" id="question-body">
@@ -35,7 +33,7 @@
             <div id="answer-description"></div>
         </div>
         <div class="card-body">
-            <button id="reset-game" style="display:none">Reset?</button>
+            <button id="reset-game" class='btn btn-info' style="display:none">Reset Game</button>
             <button id="start-game" class="btn btn-success">Start Game!</button>
         </div>
     </div>

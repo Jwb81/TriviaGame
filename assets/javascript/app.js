@@ -15,7 +15,8 @@ var questions = [
         b : "Mazda Miata",
         c : "Toyota Camry",
         d : "Nissan Maxima",
-        correctAnswer : "a"
+        correctAnswer : "a",
+        image : "assets/images/honda_accord.jpg"
     },
     {
         question : "What was the first car to come equipped with anti-lock brakes?",
@@ -23,7 +24,9 @@ var questions = [
         b : "Shelby Cobra",
         c : "BMW 1600",
         d : "Jensen FF",
-        correctAnswer : "d"
+        correctAnswer : "d",
+        image : "assets/images/jensen_ff.jpg"
+
     },
     {
         question : "What car sold more than one million units in 1965, setting a record that still stands today?",
@@ -31,7 +34,8 @@ var questions = [
         b : "Pontiac GTO",
         c : "Ford Thunderbird",
         d : "Chevrolet Impala",
-        correctAnswer : "d"
+        correctAnswer : "d",
+        image : "assets/images/chevy_impala.jpg"
     },
     {
         question : "What year was the Corvette first introduced?",
@@ -39,7 +43,8 @@ var questions = [
         b : "1953",
         c : "1963",
         d : "1973",
-        correctAnswer : "b"
+        correctAnswer : "b",
+        image : "assets/images/1953_corvette.jpg"
     },
     {
         question : "What kind of car did Starsky and Hutch drink in the classic television series?",
@@ -47,7 +52,8 @@ var questions = [
         b : "Ford Thunderbird",
         c : "Ford Gran Torino",
         d : "Ford Ranger",
-        correctAnswer : "c"
+        correctAnswer : "c",
+        image : "assets/images/starsky_gran_torino.jpg"
     }
 ]
 
@@ -147,7 +153,7 @@ var nextQuestion = function( ) {
 
     var nextQuestion = questions[questionNumber];
 
-    timeRemaining = 10;
+    timeRemaining = 15;     // set the timer to 15 seconds for each question
 
     $('#question-number').text(questionNumber + 1); // incremented because the array is 0-based
     $('#question').text(nextQuestion.question);
@@ -186,6 +192,7 @@ $('.answer').on('click', function() {
 
 $('#reset-game').on('click', function() {
     questionNumber = 0;
+    correctCount = 0;
     $(this).css('display', 'none');
     $('#results').empty();
 
@@ -195,4 +202,5 @@ $('#reset-game').on('click', function() {
 $('#start-game').on('click', function() {
     nextQuestion(questionNumber);
     $(this).css('display', 'none');
+    $('#question-count').text(' / ' + questions.length);
 })
